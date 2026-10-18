@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>الحمد | إدارة معدات النجارة</title><meta name="theme-color" content="#112c3d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="الحمد">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml">
+<style>
+:root{--navy:#112c3d;--gold:#c49a57;--paper:#f4f6f8;--ink:#183242;--muted:#617581;--line:#dce4e9;--red:#ae4141;--green:#16735a}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);font:15px Tahoma,Arial,sans-serif;color:var(--ink)}
+header{background:radial-gradient(circle at 12% 15%,#31566a 0%,transparent 35%),linear-gradient(125deg,#0b2435,#204558);color:white;text-align:center;padding:32px 12px 25px;border-bottom:5px solid var(--gold)}
+header h1{font-size:42px;color:#edcd91;margin:0 0 8px;letter-spacing:1px;text-shadow:0 2px 12px #0005}header p{margin:6px 0;font-size:14px}header small{line-height:1.9}
+nav{display:flex;gap:8px;overflow:auto;white-space:nowrap;background:white;padding:10px;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #0001}
+button{font:inherit;background:var(--navy);border:0;color:white;padding:11px 15px;border-radius:9px;cursor:pointer}
+button:disabled{opacity:.4;cursor:not-allowed}.gold,.active{background:var(--gold);color:#192b34}.red{background:var(--red)}.light{background:#eaf0f4;color:var(--ink)}.small{font-size:12px;padding:7px 9px}
+main{max-width:1150px;margin:auto;padding:14px}.card{background:white;border-radius:14px;padding:17px;margin:12px 0;box-shadow:0 2px 9px #1730420c}
+h2{font-size:21px;margin:0 0 16px}h3{font-size:17px;margin:12px 0}.hint{color:var(--muted);font-size:13px;line-height:1.9}.alert{background:#fff7e9;border:1px solid #e9c98e;padding:13px;border-radius:10px;line-height:1.9;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:10px}.metric{border-right:4px solid var(--gold);border-radius:9px;background:#f3f6f8;padding:14px;font-size:13px}.metric b{display:block;font-size:22px;margin-top:9px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}.metric{background:linear-gradient(135deg,#fff,#f0f5f8);box-shadow:0 2px 8px #0a23300b}.advance{color:#16735a;font-size:15px}
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:11px;align-items:end}
+label{font-size:13px;font-weight:bold;display:block;margin-bottom:6px}input,select,textarea{width:100%;padding:11px;border:1px solid #cbd6de;border-radius:8px;font:inherit;background:white;color:var(--ink)}
+input:focus,select:focus{outline:2px solid #d3b073}textarea{min-height:65px}input[type=file]{max-width:280px}
+.scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:630px;font-size:13px}th{background:var(--navy);color:white}th,td{border:1px solid var(--line);padding:10px;text-align:right;vertical-align:middle}tr:nth-child(even){background:#f7f9fa}
+.actions{display:flex;flex-wrap:wrap;gap:7px}.sectionbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.empty{padding:18px;color:var(--muted);text-align:center}.pill{display:inline-block;background:#edf2f5;padding:5px 9px;border-radius:30px;font-size:12px}
+#paper{display:none}.invoice{font:13px Tahoma,Arial;direction:rtl;color:#122c3b}.invoice .ih{text-align:center;border:2px solid #bb9556;padding:14px}.invoice .ih h1{margin:0;font-size:32px;color:#173447}.invoice table{min-width:0}.invoice th,.invoice td{padding:8px}.invoice .sign{display:flex;justify-content:space-between;margin-top:60px}.invoice .ih{background:#f9fbfc;border:2px solid #bb9556;border-top:9px solid #112c3d;border-radius:6px}.invoice .ih h1{color:#b58b46;font-size:38px}.invoice h2{border-bottom:2px solid #c49a57;padding-bottom:12px;color:#112c3d}.invoice table{width:100%;border-collapse:collapse}.invoice th{background:#112c3d;color:#fff}.invoice td{border-color:#d6e0e6}.invoice .totals{margin:20px 0 0 auto;max-width:420px;border:1px solid #d6e0e6;padding:16px;border-right:5px solid #c49a57;background:#f7f9fb}.invoice .totals p{display:flex;justify-content:space-between;gap:15px;margin:9px 0}.invoice .totals strong{font-size:17px;color:#112c3d}
+@media(max-width:520px){header h1{font-size:30px}main{padding:10px}.card{padding:13px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.metric b{font-size:17px}form{grid-template-columns:1fr 1fr}form .wide{grid-column:1/-1}}
+@media print{@page{size:A4 portrait;margin:12mm}body>*:not(#paper){display:none!important}#paper{display:block!important;background:white;padding:0}.invoice{font-size:12px}}
+
+/* الواجهة الجديدة — تصميم مختلف للأقسام الرئيسية */
+:root{--navy:#102c3b;--gold:#bc9559;--paper:#edf1f4;--ink:#1c3340;--muted:#6a7c86;--line:#dce4e9}
+body{background:var(--paper);font-family:Tahoma,Arial,sans-serif}
+header{background:linear-gradient(115deg,#102938 0%,#173d4e 60%,#24495a 100%);text-align:right;padding:24px max(18px,calc((100vw - 1140px)/2));border-bottom:4px solid var(--gold)}
+.brand-lockup{display:flex;align-items:center;gap:20px}.brand-mark{width:100px;height:100px;flex-shrink:0;border:2px solid var(--gold);border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#f5d9a4;font-size:28px;font-weight:bold;box-shadow:inset 0 0 0 5px #ffffff12}.brand-mark span{font:10px Arial;letter-spacing:3px;color:#d6b986;margin-top:6px}.brand-eyebrow,.eyebrow{font-size:12px;letter-spacing:1px;color:#d6b986}.brand-copy h1{font-size:35px;line-height:1.35;margin:6px 0;color:#f5d9a4}.brand-copy h1 em{font-size:21px;font-weight:normal;color:#fff;font-style:normal}.brand-copy p{font-size:13px;color:#d5e0e5}.brand-sep{color:var(--gold);padding:0 5px}.brand-address{border-top:1px solid #ffffff26;margin-top:18px;padding-top:12px;font-size:12px;color:#d1dfe6}
+nav{padding:12px max(12px,calc((100vw - 1140px)/2));gap:9px;background:#fff;box-shadow:0 4px 15px #0b263012}nav button{border-radius:11px;background:transparent;color:#304a59;font-weight:bold;border:1px solid transparent;padding:12px 15px}nav button.active{background:#112f40;color:#f4d49a;border-color:#112f40}nav button:hover{background:#f1f4f6}
+main{padding-top:20px}.dashboard-hero{background:linear-gradient(115deg,#123245,#254e61);border-radius:18px;padding:25px 27px;color:#fff;display:flex;align-items:center;justify-content:space-between;overflow:hidden;position:relative;box-shadow:0 8px 20px #102b3a20}.dashboard-hero h2{font-size:30px;margin:6px 0;color:#fff}.dashboard-hero p{font-size:13px;color:#d3e1e7;margin:0}.hero-symbol{font-size:88px;line-height:1;color:#d4b37c55}.dashboard-card{margin-top:-3px;border-radius:0 0 18px 18px;padding:20px 22px 22px}.dashboard-card .grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric{min-height:112px;background:#fff;border:1px solid #e4e9ed;border-right:0;border-top:3px solid var(--gold);box-shadow:0 4px 10px #102b3a08;border-radius:12px;padding:16px;color:#506b7a;font-size:13px}.metric b{font-size:20px;color:#153647;line-height:1.5;margin-top:12px}.dashboard-card .metric:nth-child(11){background:#143749;border-top-color:#d4b37c;color:#dce6eb}.dashboard-card .metric:nth-child(11) b{color:#fff}
+.card{border-radius:17px;box-shadow:0 3px 16px #102b3a0a}.card h2{color:#173747}.card:not(.dashboard-card){border:1px solid #e6ebef}button{transition:background .15s ease}button.gold{background:#c39b5e;color:#122c3b;font-weight:bold}.alert{background:#fff9ed;border-color:#e7d3ad;font-size:13px}.invoice .ih{border:0;border-top:9px solid #102c3b;border-bottom:3px solid #c49a57;background:#f5f8fa;border-radius:0;padding:25px 12px}.invoice .ih h1{font-size:43px;color:#a98044}.invoice .sign{border-top:1px solid #dce4e9;padding-top:20px}
+@media(max-width:720px){.dashboard-card .grid{grid-template-columns:repeat(2,minmax(0,1fr))}.brand-mark{width:72px;height:72px;font-size:20px;border-radius:15px}.brand-copy h1{font-size:25px}.brand-copy h1 em{font-size:15px;display:block}.brand-lockup{gap:12px}.brand-address{font-size:11px}.dashboard-hero{padding:20px}.dashboard-hero h2{font-size:25px}.metric{min-height:105px;padding:12px}.metric b{font-size:17px}nav button{padding:10px 13px}}
+@media(max-width:390px){.brand-copy h1{font-size:22px}.brand-mark{width:62px;height:62px}.metric b{font-size:15px}form{grid-template-columns:1fr}.dashboard-card{padding:12px}}
+@media print{header,nav,main{display:none!important}.invoice .ih{background:#f5f8fa!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.invoice th{background:#112c3d!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* تصميم الفاتورة المطبوعة */
+.bill{max-width:196mm;margin:auto;background:#fff;color:#142a3b;font-family:Tahoma,Arial,sans-serif;font-size:12px;direction:rtl;min-height:0}
+.bill-top{display:flex;justify-content:space-between;align-items:center;gap:14px;background:linear-gradient(115deg,#061d30,#163c53);color:#fff;padding:17px 20px;border-bottom:5px solid #c99b4c}
+.bill-brand{display:flex;align-items:center;gap:12px}.bill-emblem{font-size:45px;color:#e7b95c}.bill-company{font-size:36px;font-weight:900;color:#f1c574}.bill-subtitle{font-size:13px;font-weight:bold}.bill-en{font-size:9px;letter-spacing:1.5px;color:#d8c3a0;direction:ltr;text-align:right;margin-top:5px}.bill-contact{text-align:left;direction:ltr;line-height:1.8;font-size:11px}.bill-contact small{display:block;direction:rtl;margin-top:5px;color:#e1e6e9;font-size:9px}
+.bill-title{margin:12px auto 8px;text-align:center;background:#0b263c;color:#f4c675;padding:10px;font-size:26px;font-weight:bold;border:2px solid #c99b4c;border-radius:5px;max-width:72%}.bill-title small{display:block;font-size:10px;letter-spacing:4px;color:white;direction:ltr}.bill-meta{display:flex;justify-content:space-between;gap:12px;margin:10px 0}.bill-meta>div{border:1px solid #d9b36d;background:#fff8e9;padding:8px 18px;min-width:33%;text-align:center;border-radius:6px}.bill-meta small{display:block;font-size:10px}.bill-meta strong{font-size:14px}
+.bill-info{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}.bill-info>div{border:1px solid #d4dce3;border-radius:6px;overflow:hidden}.bill-info h3,.bill-notes h3{background:#0c293d;color:#fff;margin:0;padding:9px 12px;font-size:14px}.bill-info p{display:flex;justify-content:space-between;gap:10px;padding:7px 10px;margin:0;border-bottom:1px solid #edf0f3;font-size:11px}.bill-info b{text-align:left}
+.bill-items .scroll{overflow:visible}.bill-items table{width:100%;min-width:0;border-collapse:collapse}.bill-items th{background:#0b263c!important;color:#fff!important;font-size:10px;padding:9px 5px}.bill-items td{border:1px solid #d9e0e6;font-size:11px;padding:9px 5px}
+.bill-lower{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.bill-notes{border:1px solid #d9b36d;border-radius:5px;overflow:hidden}.bill-notes h3{background:#f3dfb5;color:#142a3b}.bill-notes p{font-size:10px;margin:8px 10px}.bill-totals{border:1px solid #d6dee6;align-self:start}.bill-totals p{display:flex;justify-content:space-between;gap:10px;margin:0;padding:10px;border-bottom:1px solid #d6dee6;font-size:12px}.bill-totals .bill-due{background:#f3d08c;font-size:15px;font-weight:bold}
+.bill-signatures{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:end;text-align:center;gap:18px;margin-top:26px;font-weight:bold}.bill-line{border-bottom:1px dashed #87939b;margin:28px 8px 0}.bill-stamp{height:93px;border:2px dashed #c29b5e;border-radius:50%;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#9c793d;max-width:135px;margin:auto;width:100%}.bill-stamp small{font-weight:normal;font-size:10px}.bill-footer{margin-top:30px;background:#0b263c;color:#f2d08d;padding:11px 15px;display:flex;justify-content:space-between;font-size:10px}
+@media print{@page{size:A4 portrait;margin:0}html,body{margin:0!important;padding:0!important;background:#fff!important}body>*:not(#paper){display:none!important}#paper{display:block!important;position:static!important;width:210mm!important;padding:7mm!important;margin:0!important;background:white!important}.bill{max-width:none;min-height:0;font-size:10px;print-color-adjust:exact;-webkit-print-color-adjust:exact}.bill-top,.bill-title,.bill-info h3,.bill-items th,.bill-footer,.bill-totals .bill-due{print-color-adjust:exact!important;-webkit-print-color-adjust:exact!important}.bill-signatures,.bill-lower{break-inside:avoid}}
+@media(max-width:650px){body{overflow-x:hidden}main{padding:10px}.card{padding:13px}.metric{min-width:0}.grid{gap:9px}.metric b{font-size:18px}header{padding:20px 12px}.brand-lockup{max-width:100%}nav{max-width:100vw}}
+
+/* الواجهة المرجعية: قائمة جانبية حقيقية على الكمبيوتر، وشريط تنقل ملائم للآيفون */
+.workspace{display:grid;grid-template-columns:235px minmax(0,1fr);max-width:1480px;margin:0 auto;align-items:start;gap:22px;padding:22px}
+.workspace>nav{display:flex;flex-direction:column;position:sticky;top:16px;overflow:visible;white-space:normal;background:#102d3e;padding:18px 12px;min-height:480px;border-radius:18px;box-shadow:0 10px 30px #102b3a20;gap:7px}
+.workspace>nav .sidebar-heading{color:#d4b47b;padding:15px 13px 22px;font-weight:bold;border-bottom:1px solid #ffffff20;margin-bottom:10px}
+.workspace>nav button{display:flex;align-items:center;gap:13px;width:100%;text-align:right;color:#e4ecf1;background:transparent;border-radius:10px;padding:14px 12px;border:1px solid transparent;white-space:normal}
+.workspace>nav button.active{background:#c9a365;color:#102b3a;font-weight:bold}
+.workspace>nav button:hover{background:#ffffff1b;color:white}
+.workspace>nav button.active:hover{background:#c9a365;color:#102b3a}
+.nav-symbol{font-size:21px;line-height:1;min-width:25px;text-align:center}
+.workspace>main{max-width:none;width:100%;min-width:0;margin:0;padding:0}
+.dashboard-hero{min-height:194px;background:linear-gradient(100deg,#0b2537 5%,#1a4355 68%,#1c3540 100%);border:1px solid #d0aa6940}
+.dashboard-hero h2{font-size:34px;color:#f5d5a1}
+.hero-machines{width:35%;max-width:330px;min-width:160px;opacity:.85;filter:drop-shadow(0 4px 15px #0006)}
+.brand-mark{background:linear-gradient(145deg,#e2bb78,#a87a39);color:#102d3e;border:3px solid #efd6a2;box-shadow:0 4px 24px #0005}
+.brand-mark span{color:#102d3e;font-weight:bold}
+header{background:linear-gradient(110deg,#071e2d,#123448 75%,#244c5a)}
+.card h2{border-right:4px solid #c7a166;padding-right:12px}
+.dashboard-card{border-top:4px solid #d0aa69!important;border-radius:16px;margin-top:14px}
+.metric{border-top:0;border-right:4px solid #c7a166;background:linear-gradient(135deg,#fff,#f3f6f7)}
+@media(max-width:850px){.workspace{display:block;padding:0}.workspace>nav{position:sticky;top:0;z-index:10;display:flex;flex-direction:row;min-height:0;border-radius:0;overflow-x:auto;white-space:nowrap;padding:9px;gap:5px}.workspace>nav .sidebar-heading{display:none}.workspace>nav button{width:auto;min-width:max-content;padding:10px 12px;white-space:nowrap;gap:6px;font-size:12px}.nav-symbol{font-size:16px;min-width:0}.workspace>main{padding:10px}.dashboard-hero{min-height:155px;padding:17px}.dashboard-hero h2{font-size:25px}.hero-machines{min-width:105px;width:36%}}
+@media(max-width:480px){.dashboard-hero{min-height:138px}.dashboard-hero h2{font-size:22px}.dashboard-hero p{font-size:11px}.metric b{font-size:16px}.workspace>nav button{font-size:11px}}
+@media print{.workspace{display:none!important}}
+
+
+/* v6 — workshop-inspired reference interface */
+:root{--navy:#091d31;--gold:#d9ac5a;--paper:#edf1f4;--ink:#142c40}
+body{background:#e9eef2}
+header{padding:0!important;background:#091d31!important;border:0!important;text-align:right!important}
+.workshop-banner{position:relative;min-height:220px;overflow:hidden;background:radial-gradient(ellipse at 70% 55%,#3d5360 0%,transparent 48%),linear-gradient(120deg,#081b2d,#152c3b 55%,#0a1a2a);border-bottom:5px solid #d7a857}
+.workshop-banner:before{content:"";position:absolute;inset:0;opacity:.18;background:repeating-linear-gradient(90deg,transparent 0 78px,#d7a857 79px 81px,transparent 82px 155px),linear-gradient(0deg,#bc8242 0 2px,transparent 3px 100%);pointer-events:none}
+.workshop-content{max-width:1480px;margin:auto;min-height:220px;display:flex;align-items:center;justify-content:space-between;gap:22px;padding:25px 34px;position:relative;z-index:1}
+.workshop-content .brand-lockup{align-items:center;gap:17px}.workshop-content .brand-mark{width:98px;height:98px;border-radius:50%;background:#d7a857;color:#091d31;border:4px solid #edcc8d;font-size:26px}.workshop-content .brand-copy h1{font-size:39px;color:#e7b964}.workshop-content .brand-copy h1 em{display:block;color:white;font-size:19px}.workshop-content .brand-copy p{color:#d5e0e6}.workshop-content .brand-address{border:0;margin-top:5px;padding:0}
+.workshop-illustration{flex:0 1 420px;max-width:43%;filter:drop-shadow(0 15px 14px #0008)}
+.mobile-menu{display:none;position:absolute;top:14px;left:14px;z-index:3;background:#d6aa61;color:#0b2537;border-radius:11px;padding:9px 12px;font-weight:bold}
+.workspace{max-width:1480px;gap:0;padding:0;grid-template-columns:230px minmax(0,1fr);background:#e9eef2;min-height:75vh}
+.workspace>nav{top:0;min-height:calc(100vh - 10px);border-radius:0;padding:22px 11px;background:linear-gradient(#0a2237,#06192c);box-shadow:3px 0 15px #0002}
+.workspace>nav .sidebar-heading{font-size:16px;color:#e3b76d}.workspace>nav button{font-size:14px}.workspace>nav button.active{background:linear-gradient(110deg,#f0c777,#c69a4e)}
+.workspace>main{padding:24px;min-width:0}
+.dashboard-hero{border-radius:14px;min-height:160px;background:linear-gradient(115deg,#0c2b41,#153e52);border-right:5px solid #d6aa61}.dashboard-hero h2{color:#e7bd76}
+.dashboard-card{border-top:0!important;background:transparent!important;box-shadow:none!important;padding:8px 0!important}.dashboard-card .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.metric{background:#fff!important;border:1px solid #dce4e9!important;border-bottom:4px solid #c9a062!important;border-radius:12px!important;min-height:125px;box-shadow:0 5px 15px #0c243015!important}.metric b{font-size:20px!important;color:#0c3047!important}
+.dashboard-card .metric:nth-child(11){background:#102d43!important;color:#fff!important}.dashboard-card .metric:nth-child(11) b{color:#fff!important}
+.quick-actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}.quick-actions button{background:#102d43;border-bottom:3px solid #d5aa66;border-radius:11px;min-height:65px;font-weight:bold}
+.workshop-note{background:#fff9e9;border:1px solid #e5c78d;padding:12px 16px;border-radius:10px;font-size:12px;line-height:1.8;margin-bottom:15px}
+.drawer-shade{display:none}
+@media(max-width:850px){.workshop-banner,.workshop-content{min-height:155px}.workshop-content{padding:20px 18px 20px 70px}.workshop-illustration{max-width:30%}.workshop-content .brand-mark{width:65px;height:65px;font-size:17px}.workshop-content .brand-copy h1{font-size:26px}.workshop-content .brand-copy h1 em{font-size:13px}.workshop-content .brand-copy p{font-size:11px}.workshop-content .brand-address{font-size:10px}.mobile-menu{display:block}.workspace{display:block}.workspace>nav{position:fixed;right:0;top:0;bottom:0;z-index:40;width:min(82vw,310px);min-height:100vh;display:flex;flex-direction:column;transform:translateX(105%);transition:transform .2s;overflow-y:auto;box-shadow:0 0 30px #0007}.drawer-open .workspace>nav{transform:translateX(0)}.drawer-shade{position:fixed;inset:0;z-index:39;background:#0009}.drawer-open .drawer-shade{display:block}.workspace>nav .sidebar-heading{display:block}.workspace>nav button{width:100%;white-space:normal;font-size:14px;padding:13px}.workspace>main{padding:13px}.dashboard-card .grid{grid-template-columns:repeat(2,minmax(0,1fr))}.quick-actions{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard-hero{min-height:135px}.metric{min-height:105px}}
+@media(max-width:480px){.workshop-illustration{display:none}.workshop-content .brand-copy h1{font-size:27px}.workshop-content{padding-right:15px}.dashboard-hero h2{font-size:25px}.metric b{font-size:16px!important}.metric{padding:12px!important}}
+@media print{header,.mobile-menu,.drawer-shade,.workspace{display:none!important}}
+
+
+/* تحسينات v7 لشاشة الآيفون */
+@media(max-width:650px){
+ .workspace>main{padding:10px!important}
+ .workshop-banner,.workshop-content{min-height:142px}
+ .workshop-content{padding:17px 12px 17px 90px}
+ .workshop-content .brand-mark{width:57px;height:57px;font-size:16px}
+ .workshop-content .brand-copy h1{font-size:24px}
+ .workshop-content .brand-address{font-size:10px;line-height:1.7}
+ .mobile-menu{left:9px;top:12px;font-size:12px;padding:10px}
+ .dashboard-card .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .metric{min-height:96px}
+  .scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch;border-radius:9px}
+  .scroll table{display:table;min-width:650px;width:100%;font-size:11px}
+  .scroll thead{display:table-header-group}
+  .scroll tbody{display:table-row-group}
+  .scroll tr{display:table-row;background:transparent!important;border:0;padding:0;box-shadow:none}
+  .scroll td{display:table-cell;text-align:right;white-space:normal;padding:8px 6px;border:1px solid #dce4e9;vertical-align:middle}
+  .scroll td:before{display:none}
+  .scroll th{padding:8px 6px}
+  .scroll .actions{flex-wrap:nowrap}
+  .bill-items .scroll table{min-width:0;font-size:9px}
+  .bill-items .scroll td{font-size:9px}
+
+}
+
+/* إصدار نهائي — تحسين طباعة صفحة واحدة وتناسق الواجهة */
+@media print{
+ @page{size:A4 portrait;margin:0}
+ #paper{height:auto!important;min-height:0!important;overflow:hidden!important}
+ .bill{min-height:0!important;max-width:100%!important}
+ .bill-top{padding:10px 14px!important}
+ .bill-company{font-size:28px!important}
+ .bill-title{margin:7px auto!important;padding:6px!important;font-size:20px!important}
+ .bill-meta,.bill-info{margin:7px 0!important}
+ .bill-info p{padding:5px 8px!important}
+ .bill-items th,.bill-items td{padding:5px 4px!important}
+ .bill-lower{margin-top:8px!important}
+ .bill-signatures{margin-top:12px!important}
+ .bill-line{margin-top:18px!important}
+ .bill-stamp{height:65px!important}
+ .bill-footer{margin-top:12px!important;padding:8px!important}
+ .bill-brands{margin-top:9px!important;padding:8px!important}
+}
+.bill-brands{border-top:3px solid #d3a75e;background:#0b263c;color:#fff;padding:12px;margin-top:15px;text-align:center}
+.bill-brands strong{display:block;color:#eac47b;margin-bottom:8px;font-size:13px}
+.bill-brand-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;direction:ltr}
+.bill-brand-grid span{background:#fff;color:#142c40;border-radius:3px;font:bold 10px Arial,sans-serif;padding:7px 2px;white-space:nowrap}
+@media(max-width:650px){.workspace>main{overflow:hidden}.card{max-width:100%;min-width:0}.bill-brand-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* ALHAMD v8 — mobile drawer, compact accounting rows and print-ready invoice */
+html,body{max-width:100%;overflow-x:clip}
+.workspace>main,.card,#app{min-width:0}
+.deals-list{display:grid;gap:7px}.deal-row{display:grid;grid-template-columns:minmax(140px,1.2fr) minmax(290px,2fr) auto;gap:9px;align-items:center;border:1px solid #d8e0e5;border-right:4px solid #c7a166;background:#fff;border-radius:8px;padding:9px 11px}
+.deal-primary{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.deal-primary strong{color:#102d43}.deal-numbers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;font-size:11px}.deal-numbers span{display:flex;flex-direction:column;gap:3px}.deal-numbers b{font-size:13px;white-space:nowrap}.deal-actions{display:flex;gap:5px;flex-wrap:wrap}.deal-actions button{font-size:11px;padding:7px 9px}.deal-row details{grid-column:1/-1;border-top:1px solid #e6ebee;padding-top:5px}.deal-row summary{cursor:pointer;color:#365366;font-size:12px}.deal-row details:not([open]){padding-bottom:0}.deal-row details .scroll{margin-top:8px}
+.scroll{max-width:100%;overflow-x:auto}.scroll table{min-width:560px}.scroll th,.scroll td{padding:7px 6px;font-size:12px}
+@media(max-width:850px){
+ .workspace{display:block!important;width:100%!important;overflow:visible!important}
+ .workspace>nav{display:flex!important;flex-direction:column!important;position:fixed!important;top:0!important;left:0!important;right:auto!important;bottom:0!important;width:min(82vw,300px)!important;min-height:100dvh!important;height:100dvh!important;overflow-y:auto!important;overflow-x:hidden!important;z-index:50!important;padding:20px 11px!important;gap:7px!important;border-radius:0!important;white-space:normal!important;transform:translateX(-110%)!important;transition:transform .2s ease!important;background:linear-gradient(#0a2237,#06192c)!important}
+ body.drawer-open .workspace>nav{transform:translateX(0)!important}
+ .workspace>nav .sidebar-heading{display:block!important}.workspace>nav button{display:flex!important;flex-direction:row!important;width:100%!important;min-width:0!important;white-space:normal!important;text-align:right!important;font-size:14px!important;padding:12px!important}
+ .mobile-menu{display:block!important;left:9px!important;top:10px!important;z-index:5!important}
+ body.drawer-open .drawer-shade{display:block!important;z-index:49!important}
+ .workspace>main{padding:10px!important;width:100%!important}
+ .deal-row{grid-template-columns:1fr!important;gap:7px!important;padding:9px!important}
+ .deal-numbers{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ .deal-numbers b{font-size:11px!important;white-space:normal!important}
+ .deal-row details{grid-column:1!important}
+ .deal-actions{justify-content:flex-start}
+ .scroll table{min-width:560px!important}
+}
+@media print{
+ @page{size:A4 portrait;margin:0}
+ html,body{width:210mm!important;height:auto!important;overflow:visible!important}
+ #paper{display:block!important;box-sizing:border-box!important;width:210mm!important;max-width:210mm!important;padding:5mm!important;margin:0!important;overflow:visible!important}
+ .bill{width:200mm!important;max-width:200mm!important;margin:0!important;min-height:0!important;font-size:9px!important;break-inside:avoid!important;page-break-inside:avoid!important}
+ .bill-top{padding:7px 11px!important}.bill-title{font-size:19px!important;margin:5px auto!important}.bill-meta,.bill-info{margin:5px 0!important}.bill-info p{padding:4px 7px!important}
+ .bill-items th,.bill-items td{padding:4px 3px!important;font-size:9px!important}.bill-lower{margin-top:6px!important}.bill-notes p{margin:5px 8px!important}.bill-totals p{padding:6px!important}
+ .bill-signatures{margin-top:9px!important}.bill-line{margin-top:12px!important}.bill-stamp{height:49px!important}.bill-brands{padding:5px!important;margin-top:6px!important}.bill-brand-grid span{font-size:8px!important;padding:4px 1px!important}.bill-footer{margin-top:6px!important;padding:7px!important}
+ .bill-machine-photo{max-width:48px!important;max-height:34px!important;object-fit:contain!important}
+}
+.bill-machine-photo{width:55px;height:40px;object-fit:contain}
+
+.dashboard-mini-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:8px}.dashboard-mini-grid .card{min-width:0;margin:7px 0!important}@media(max-width:850px){.dashboard-mini-grid{grid-template-columns:1fr}}
+/* v9 — dense reference-style workspace; no changes to accounting calculations */
+:root{--navy:#071b30;--gold:#d8ac61;--paper:#e9eef2}
+.workspace{grid-template-columns:205px minmax(0,1fr)}
+.workspace>nav{background:linear-gradient(180deg,#071d34,#041427)!important;padding:12px 8px!important}
+.workspace>nav button{min-height:44px!important;padding:10px 11px!important;border-radius:7px!important;font-size:13px!important}
+.workspace>nav .sidebar-heading{padding:10px 9px 16px!important}
+.workspace>main{padding:14px!important}
+.workshop-banner,.workshop-content{min-height:142px!important}
+.workshop-content{padding-top:14px!important;padding-bottom:14px!important}
+.workshop-content .brand-mark{width:73px;height:73px;font-size:19px}
+.workshop-content .brand-copy h1{font-size:30px}
+.workshop-illustration{max-width:32%}
+.workshop-note{padding:8px 12px!important;margin-bottom:10px!important;font-size:11px!important}
+.card{padding:12px 13px!important;margin:9px 0!important;border-radius:9px!important;box-shadow:0 2px 8px #0a25300a!important}
+.card h2{font-size:17px!important;margin-bottom:11px!important;padding-right:8px!important}
+.card h3{font-size:14px!important}
+.dashboard-hero{min-height:105px!important;padding:14px 18px!important}
+.dashboard-hero h2{font-size:26px!important}
+.dashboard-card .grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:7px!important}
+.metric{min-height:70px!important;padding:9px 10px!important;font-size:11px!important;border-bottom-width:3px!important}
+.metric b{font-size:16px!important;margin-top:4px!important}
+.quick-actions{gap:7px!important;margin:8px 0!important}
+.quick-actions button{min-height:44px!important;font-size:12px!important}
+form{gap:8px!important;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))!important}
+form label{font-size:11px!important;margin-bottom:3px!important}
+form input,form select,form textarea{padding:8px!important;font-size:13px!important;min-height:37px!important}
+form button{padding:9px 14px!important;font-size:12px!important}
+.sectionbar{margin-bottom:7px}
+.scroll{width:100%;max-width:100%;overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;border:1px solid #dce4e9;border-radius:7px}
+.scroll table{min-width:max-content!important;width:100%!important;font-size:11px!important}
+.scroll th,.scroll td{padding:7px 8px!important;font-size:11px!important;white-space:nowrap!important;line-height:1.35!important}
+.scroll th{background:#0a2036!important;color:#fff!important}
+.scroll tbody tr:nth-child(even){background:#f2f6f8!important}
+.scroll .actions{flex-wrap:nowrap!important}
+.scroll button{padding:5px 7px!important;font-size:10px!important}
+.deals-list{gap:5px!important}
+.deal-row{grid-template-columns:minmax(130px,1fr) minmax(240px,1.5fr) auto!important;padding:7px 9px!important;gap:7px!important}
+.deal-row .deal-numbers{font-size:10px!important}
+.deal-row .deal-numbers b{font-size:11px!important}
+.deal-actions button{font-size:10px!important;padding:6px!important}
+.bill{font-family:Tahoma,Arial,sans-serif}
+.bill-top{background:linear-gradient(110deg,#06172b,#102c44 70%,#06172b)!important;border-bottom:5px solid #d8ac61!important}
+.bill-title{background:#081c32!important;border:3px solid #d4a65b!important;color:#f2c573!important}
+.bill-info h3,.bill-items th{background:#071b30!important}
+.bill-brands{background:#071b30!important}
+.bill-footer{background:#071b30!important}
+.bill-machine-photo{object-fit:contain}
+@media(max-width:850px){
+ .workspace>main{padding:8px!important}
+ .workspace>nav{padding:20px 11px!important}
+ .workspace>nav button{font-size:14px!important;min-height:48px!important}
+ .workshop-banner,.workshop-content{min-height:125px!important}
+ .workshop-content{padding:12px 10px 12px 76px!important}
+ .workshop-content .brand-mark{width:55px;height:55px;font-size:15px}
+ .workshop-content .brand-copy h1{font-size:23px!important}
+ .workshop-content .brand-address{font-size:9px!important}
+ .card{padding:10px!important;margin:7px 0!important}
+ .card h2{font-size:16px!important}
+ .dashboard-hero{min-height:94px!important;padding:12px!important}
+ .dashboard-hero h2{font-size:22px!important}
+ .dashboard-card .grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .metric{min-height:69px!important;padding:8px!important}
+ .metric b{font-size:14px!important}
+ .deal-row{grid-template-columns:1fr!important}
+ .deal-numbers{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ .scroll table{min-width:max-content!important}
+ form{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ form .wide{grid-column:1/-1!important}
+}
+@media(max-width:370px){form{grid-template-columns:1fr!important}}
+@media print{
+ .bill-items .scroll{overflow:visible!important;border:0!important}
+ .bill-items .scroll table{width:100%!important;min-width:0!important}
+ .bill-items .scroll td,.bill-items .scroll th{white-space:normal!important;font-size:8px!important;padding:4px 3px!important}
+ .bill{break-inside:auto!important;page-break-inside:auto!important}
+ .bill-top,.bill-info,.bill-meta,.bill-lower,.bill-signatures,.bill-brands{break-inside:avoid!important}
+ .bill-brands .bill-brand-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important}
+}
+
+/* Reference-style navigation and dense management screens */
+.workspace>nav button{min-height:47px;justify-content:flex-start;gap:10px!important}
+.workspace>nav .nav-symbol{width:27px;min-width:27px;text-align:center;font-size:18px}
+.workspace>main>.card{margin:9px 0;padding:12px 14px}
+.workspace>main>.card h2{font-size:19px;margin-bottom:11px}
+.workspace>main form{gap:8px;grid-template-columns:repeat(auto-fit,minmax(145px,1fr))}
+.workspace>main form input,.workspace>main form select{padding:9px}
+.workspace>main .scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.workspace>main .scroll table{min-width:580px;font-size:11px}
+.workspace>main .scroll th,.workspace>main .scroll td{padding:7px 5px;font-size:11px}
+.workspace>main .card .card{margin:7px 0;padding:10px}
+@media(max-width:850px){.workspace>nav button{min-height:49px}.workspace>main>.card{margin:8px 0;padding:11px}.workspace>main form{grid-template-columns:repeat(2,minmax(0,1fr))}.workspace>main form .wide{grid-column:1/-1}.workspace>main .scroll table{min-width:580px!important}.workspace>main .scroll{overflow-x:auto!important}.workspace>main .scroll th,.workspace>main .scroll td{white-space:nowrap!important}}
+@media(max-width:380px){.workspace>main form{grid-template-columns:1fr}}
+@media print{.workspace{display:none!important}}
+</style></head><body>
+<header><div class="workshop-banner"><button class="mobile-menu" type="button" aria-label="فتح القائمة" onclick="document.body.classList.toggle('drawer-open')">☰ القائمة</button><div class="workshop-content"><div><div class="brand-lockup"><div class="brand-mark">الحمد<span>ALHAMD</span></div><div class="brand-copy"><div class="brand-eyebrow">نظام إدارة معدات النجارة</div><h1>الحمد <em>لاستيراد وتجارة معدات النجارة</em></h1><p>م. أحمد هاني</p></div></div><div class="brand-address">المنصورة – دكرنس – القباب الصغرى – بجوار معرض مكة للسيراميك</div></div><svg class="workshop-illustration" viewBox="0 0 430 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رسومات ماكينات نجارة"><defs><linearGradient id="mach" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d6dde1"/><stop offset=".5" stop-color="#728b9a"/><stop offset="1" stop-color="#253f50"/></linearGradient></defs><ellipse cx="216" cy="174" rx="210" ry="20" fill="#000" opacity=".35"/><g stroke="#e6c48b" stroke-width="2"><rect x="24" y="82" width="183" height="80" rx="8" fill="url(#mach)"/><rect x="43" y="57" width="143" height="30" rx="4" fill="#294e61"/><rect x="50" y="99" width="90" height="40" rx="4" fill="#172f42"/><circle cx="163" cy="117" r="15" fill="#d6ac65"/><rect x="30" y="160" width="17" height="18" fill="#203a4c"/><rect x="182" y="160" width="17" height="18" fill="#203a4c"/><rect x="230" y="97" width="171" height="58" rx="7" fill="url(#mach)"/><rect x="245" y="75" width="140" height="25" rx="4" fill="#26465a"/><rect x="248" y="112" width="85" height="24" rx="3" fill="#18364a"/><circle cx="365" cy="122" r="13" fill="#d6ac65"/><rect x="242" y="154" width="13" height="23" fill="#203a4c"/><rect x="381" y="154" width="13" height="23" fill="#203a4c"/></g><text x="84" y="124" font-size="14" font-family="Arial" fill="#e7bc72">SCM</text><text x="266" y="129" font-size="12" font-family="Arial" fill="#e7bc72">ALHAMD</text></svg></div></div></header>
+<div class="drawer-shade" onclick="document.body.classList.remove('drawer-open')"></div><div class="workspace"><nav id="nav" aria-label="أقسام البرنامج"></nav><main><div class="workshop-note">هذه نسخة تبدأ بدون بيانات تجريبية. الحفظ على الجهاز فقط، والربط السحابي غير مفعّل. احتفظ بنسخة احتياطية من الإعدادات.</div><section id="app"></section></main></div><div id="paper"></div>
+<script>
+'use strict';
+const STORAGE='alhamd-production-v2', EMPTY=()=>({suppliers:[],machines:[],supplierPayments:[],customers:[],deals:[],receipts:[],expenses:[],withdrawals:[],cashMoves:[],loans:[],loanMoves:[]});
+let db;try{db=JSON.parse(localStorage.getItem(STORAGE))}catch(e){}if(!db||typeof db!=='object')db=EMPTY();for(const k of Object.keys(EMPTY()))if(!Array.isArray(db[k]))db[k]=[];
+let tab='الرئيسية',query='';
+const $=id=>document.getElementById(id), num=x=>Number(x)||0, cash=x=>num(x).toLocaleString('ar-EG',{maximumFractionDigits:2})+' ج.م', sum=(arr,fn)=>arr.reduce((a,b)=>a+num(fn(b)),0), uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,9), today=()=>{let d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')},esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c])),nameOf=(list,id)=>list.find(x=>x.id===id)?.name||'—';
+function persist(){try{localStorage.setItem(STORAGE,JSON.stringify(db));render()}catch(e){alert('تعذّر حفظ البيانات. صدّر نسخة احتياطية وتأكد من وجود مساحة تخزين.')}}
+function field(k,l,type='text',attrs='',wide=false){return `<div class="${wide?'wide':''}"><label>${l}</label><input name="${k}" type="${type}" ${attrs} required></div>`}
+function optional(k,l,type='text',attrs=''){return `<div><label>${l}</label><input name="${k}" type="${type}" ${attrs}></div>`}
+function pick(k,l,arr,placeholder='اختر'){return `<div><label>${l}</label><select name="${k}" required><option value="">${placeholder}</option>${arr.map(o=>`<option value="${esc(o.id)}">${esc(o.label||o.name)}</option>`).join('')}</select></div>`}
+function noteChoice(k,l,options){return `<div><label>${l}</label><select name="${k}" required>${options.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join('')}</select></div>`}
+const supplierNotes=['دفعة من الحساب','مقدم للمورد','سداد جزء من ماكينة','سداد كامل','أخرى'];
+const customerNotes=['عربون','دفعة من الحساب','سداد باقي الصفقة','سداد كامل','أخرى'];
+const expenseNotes=['نقل','صيانة','عمالة','شحن','تحميل وتنزيل','مصروف عام','أخرى'];
+function date(){return field('date','التاريخ','date',`value="${today()}"`)}
+function form(action,html){return `<form data-action="${action}">${html}<div class="wide"><button class="gold" type="submit">حفظ العملية</button></div></form>`}
+function grid(items){return `<div class="grid">${items.map(([k,v])=>`<div class="metric">${k}<b>${v}</b></div>`).join('')}</div>`}
+function table(headers,rows){return `<div class="scroll"><table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.length?rows.map(row=>{let i=0;return row.replace(/<td(\\s[^>]*)?>/g,(tag,attrs='')=>`<td${attrs} data-label="${esc(headers[i++]||'')}">`)}).join(''):`<tr><td colspan="${headers.length}" class="empty">لا توجد بيانات بعد</td></tr>`}</tbody></table></div>`}
+function tr(vals){return `<tr>${vals.map(v=>`<td>${v}</td>`).join('')}</tr>`}
+function btn(label,act,id,style='small'){return `<button class="${style}" data-do="${act}" data-id="${esc(id)}">${label}</button>`}
+function machineCost(m){return num(m.cost)+sum(db.expenses.filter(e=>e.machineId===m.id),e=>e.amount)}
+function dealMachines(d){return db.machines.filter(m=>m.dealId===d.id)}
+function total(d){return sum(dealMachines(d),m=>m.sale)}
+function paid(d){return sum(db.receipts.filter(r=>r.dealId===d.id),r=>r.amount)}
+function deliverable(d){return paid(d)-sum(dealMachines(d).filter(m=>m.delivered),m=>m.sale)}
+function loanBalance(l){return sum(db.loanMoves.filter(m=>m.loanId===l.id),m=>m.type==='give'?m.amount:-m.amount)}
+function loanCash(){return sum(db.loanMoves,m=>{let l=db.loans.find(x=>x.id===m.loanId);if(!l)return 0;return (l.direction==='out'?-1:1)*(m.type==='give'?m.amount:-m.amount)})}
+function supplierBalance(s){return sum(db.machines.filter(m=>m.supplierId===s.id),m=>m.cost)-sum(db.supplierPayments.filter(p=>p.supplierId===s.id),p=>p.amount)}
+function nav(){const tabs=[['الرئيسية','⌂'],['الماكينات','⚙'],['صفقات البيع','🤝'],['العملاء','♟'],['الموردون','♧'],['المخزون','▣'],['المصاريف والخزنة','◈'],['السلف','⇄'],['التقارير','▥'],['الفواتير','▤'],['الإعدادات','☷']];$('nav').innerHTML='<div class="sidebar-heading">القائمة الرئيسية</div>'+tabs.map(([t,ico])=>`<button data-tab="${t}" class="${tab===t?'active':''}"><span class="nav-symbol">${ico}</span><span>${t}</span></button>`).join('')}
+function render(){nav();let html='';
+if(tab==='الرئيسية'){
+let receipts=sum(db.receipts,r=>r.amount),sp=sum(db.supplierPayments,p=>p.amount),exp=sum(db.expenses,e=>e.amount),draw=sum(db.withdrawals,w=>w.amount),moves=sum(db.cashMoves,x=>x.type==='in'?x.amount:-x.amount),sold=db.machines.filter(m=>m.dealId),stock=db.machines.filter(m=>!m.dealId);
+html=`<div class="dashboard-hero"><div><span class="eyebrow">نظرة عامة على النشاط</span><h2>لوحة التحكم</h2><p>ملخص حسابات الشركة والمخزون والحركة النقدية</p></div><div class="hero-machines" aria-hidden="true"><svg viewBox="0 0 330 145" width="100%" height="100%"><defs><linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e5cf9d"/><stop offset="1" stop-color="#98733b"/></linearGradient></defs><g fill="none" stroke="url(#steel)" stroke-width="3"><rect x="20" y="42" width="125" height="70" rx="5"/><path d="M20 61h125M40 112v18m84-18v18M44 80h28m14 0h42"/><circle cx="96" cy="43" r="25"/><path d="M96 18v50M71 43h50M170 55h140v59H170zM183 55V32h111v23M187 74h103M195 114v18m98-18v18M227 76v38M259 76v38"/><circle cx="242" cy="41" r="10"/></g><g fill="#e2bd78"><circle cx="96" cy="43" r="5"/><rect x="28" y="89" width="28" height="7" rx="2"/><rect x="178" y="87" width="32" height="8" rx="2"/></g></svg></div></div><div class="card dashboard-card">${grid([['الماكينات بالمخزن',stock.length],['تكلفة الماكينات المتاحة',cash(sum(stock,m=>machineCost(m)))],['المقبوض من العملاء',cash(receipts)],['المدفوع للموردين',cash(sp)],['المتبقي على العملاء',cash(sum(db.deals,d=>total(d)-paid(d)))],['مستحق للموردين',cash(sum(db.suppliers,s=>Math.max(0,supplierBalance(s))))],['مقدمات لدى الموردين',cash(sum(db.suppliers,s=>Math.max(0,-supplierBalance(s))))],['فلوس لينا عند الغير',cash(sum(db.loans.filter(l=>l.direction==='out'),l=>Math.max(0,loanBalance(l))))],['فلوس علينا للغير',cash(sum(db.loans.filter(l=>l.direction==='in'),l=>Math.max(0,loanBalance(l))))],['المصاريف',cash(exp)],['المسحوبات الشخصية',cash(draw)],['الرصيد النقدي المسجل',cash(receipts-sp-exp-draw+moves+loanCash())],['ربح الماكينات المباعة قبل المصاريف العامة',cash(sum(sold,m=>m.sale-machineCost(m)))]])}<p class="hint">الرصيد النقدي يعتمد على الحركات المسجلة فقط. الربح تقديري ولا يشمل المصاريف العامة أو الضرائب.</p></div><div class="dashboard-mini-grid"><div class="card"><h2>أحدث صفقات البيع</h2>${table(['الصفقة','العميل','الإجمالي','الحالة'],db.deals.slice(-4).reverse().map(d=>tr([esc(d.code),esc(nameOf(db.customers,d.customerId)),cash(total(d)),paid(d)>=total(d)?'مكتملة':'قيد السداد'])))}</div><div class="card"><h2>أحدث العملاء</h2>${table(['العميل','الهاتف','الصفقات'],db.customers.slice(-4).reverse().map(c=>tr([esc(c.name),esc(c.phone||'—'),db.deals.filter(d=>d.customerId===c.id).length])))}</div><div class="card"><h2>أحدث الموردين</h2>${table(['المورد','المستحق'],db.suppliers.slice(-4).reverse().map(v=>tr([esc(v.name),cash(supplierBalance(v))])))}</div></div><div class="quick-actions"><button data-go="الماكينات">⚙ إضافة ماكينة</button><button data-go="صفقات البيع">▣ صفقة بيع / عميل</button><button data-go="الموردون">♧ إضافة مورد</button><button data-go="المصاريف والخزنة">◈ تسجيل مصروف</button></div>`;
+}else if(tab==='الماكينات'){
+html=`<div class="card"><h2>إضافة ماكينة / شحنة</h2><p class="hint">اكتب نفس رقم الشحنة لكل الماكينات التي تم شراؤها معًا.</p>${db.suppliers.length?form('machine',date()+field('name','اسم الماكينة')+field('code','كود الماكينة')+pick('supplierId','المورد',db.suppliers)+field('batch','رقم الشحنة / عملية الشراء')+field('cost','سعر الشراء','number','min="0" step="0.01"')):'<p class="hint">أضف موردًا أولًا من صفحة الموردون.</p>'}</div>
+<div class="card"><div class="sectionbar"><h2>قائمة الماكينات</h2><input id="machineSearch" placeholder="بحث بالاسم أو الكود" value="${esc(query)}" style="max-width:260px"></div>${table(['الكود','الماكينة','المورد','الشحنة','تكلفة الشراء','المصاريف المرتبطة','سعر البيع','الحالة','إجراء'],db.machines.filter(m=>(m.code+' '+m.name).toLowerCase().includes(query.toLowerCase())).map(m=>tr([esc(m.code),esc(m.name),esc(nameOf(db.suppliers,m.supplierId)),esc(m.batch),cash(m.cost),cash(machineCost(m)-num(m.cost)),m.dealId?cash(m.sale):'—',m.delivered?'تم التسليم':m.dealId?'محجوزة':'متاحة',m.dealId?'—':btn('تعديل','editMachine',m.id,'light small')])) )}</div>`;
+}else if(tab==='الموردون'){
+html=`<div class="card"><h2>إضافة مورد</h2>${form('supplier',field('name','اسم المورد')+optional('phone','رقم الهاتف','tel'))}</div>
+<div class="card"><h2>حسابات الموردين</h2>${table(['المورد','المشتريات','المدفوع والمقدم','المتبقي','إجراء'],db.suppliers.map(s=>tr([esc(s.name),cash(sum(db.machines.filter(m=>m.supplierId===s.id),m=>m.cost)),cash(sum(db.supplierPayments.filter(p=>p.supplierId===s.id),p=>p.amount)),(supplierBalance(s)<0?'<strong class="advance">مقدم لنا: '+cash(-supplierBalance(s))+'</strong>':'<strong>'+cash(supplierBalance(s))+'</strong>'),btn('تعديل الاسم','renameSupplier',s.id,'light small')+' '+btn('التفاصيل','supplierDetail',s.id,'small')])) )}</div>
+<div class="card"><h2>تسجيل دفعة أو مقدم لمورد</h2>${db.suppliers.length?form('supplierPayment',date()+pick('supplierId','المورد',db.suppliers)+field('amount','المبلغ','number','min="0.01" step="0.01"')+noteChoice('note','البيان',supplierNotes)):'<p class="hint">أضف موردًا أولًا.</p>'}</div>
+<div class="card"><h2>سجل مدفوعات الموردين</h2>${table(['التاريخ','المورد','البيان','المبلغ','إجراء'],db.supplierPayments.map(p=>tr([esc(p.date),esc(nameOf(db.suppliers,p.supplierId)),esc(p.note),cash(p.amount),btn('تعديل','editSupplierPayment',p.id,'light small')+' '+btn('إلغاء','deleteSupplierPayment',p.id,'red small')])))}</div>`;
+}else if(['العملاء والصفقات','صفقات البيع','العملاء'].includes(tab)){
+html=`<div class="card"><h2>إضافة عميل</h2>${form('customer',field('name','اسم العميل')+optional('phone','رقم الهاتف','tel'))}</div>
+<div class="card"><h2>إنشاء صفقة بيع</h2>${db.customers.length?form('deal',date()+pick('customerId','العميل',db.customers)+noteChoice('note','البيان',['بيع ماكينة','بيع عدة ماكينات','حجز ماكينة','أخرى'])):'<p class="hint">أضف عميلًا أولًا.</p>'}</div>
+<div class="card"><h2>إضافة ماكينة لصفقة</h2>${db.deals.length&&db.machines.some(m=>!m.dealId)?form('assign',pick('dealId','الصفقة',db.deals.map(d=>({id:d.id,name:d.code+' — '+nameOf(db.customers,d.customerId)})))+pick('machineId','الماكينة المتاحة',db.machines.filter(m=>!m.dealId).map(m=>({id:m.id,name:m.code+' — '+m.name})))+field('sale','سعر البيع','number','min="0.01" step="0.01"')):'<p class="hint">يلزم وجود صفقة وماكينة متاحة.</p>'}</div>
+<div class="card"><h2>تسجيل قسط / دفعة عميل</h2>${db.deals.some(d=>total(d)>paid(d))?form('receipt',date()+pick('dealId','الصفقة',db.deals.filter(d=>total(d)>paid(d)).map(d=>({id:d.id,name:d.code+' — '+nameOf(db.customers,d.customerId)})))+field('amount','المبلغ','number','min="0.01" step="0.01"')+noteChoice('note','البيان',customerNotes)):'<p class="hint">لا توجد صفقات بمبالغ مستحقة.</p>'}</div>
+<div class="card"><h2>العملاء</h2>${table(['العميل','الهاتف','الصفقات','المتبقي','إجراء'],db.customers.map(c=>{let ds=db.deals.filter(d=>d.customerId===c.id);return tr([esc(c.name),esc(c.phone),ds.length,cash(sum(ds,d=>total(d)-paid(d))),btn('تعديل','editCustomer',c.id,'light small')])}))}</div>
+<div class="card"><h2>الصفقات والفواتير والتسليم</h2>${db.deals.length?`<div class="deals-list">${db.deals.map(d=>`<div class="deal-row"><div class="deal-primary"><strong>${esc(d.code)}</strong><span>${esc(nameOf(db.customers,d.customerId))}</span></div><div class="deal-numbers"><span>الإجمالي <b>${cash(total(d))}</b></span><span>المدفوع <b>${cash(paid(d))}</b></span><span>المتبقي <b>${cash(total(d)-paid(d))}</b></span></div><div class="deal-actions">${btn('فاتورة','invoice',d.id)}${btn('كشف حساب','statement',d.id)}${btn('آخر إيصال','receiptPrint',d.id)}</div><details><summary>الماكينات والتسليم (${dealMachines(d).length})</summary>${table(['الماكينة','سعر البيع','التسليم','إجراء'],dealMachines(d).map(m=>tr([esc(m.code+' — '+m.name),cash(m.sale),m.delivered?'تم التسليم':'لم تسلم',m.delivered?'—':btn('تسليم','deliver',m.id,'gold small')])) )}</details></div>`).join('')}</div>`:'<p class="hint">لا توجد صفقات بعد.</p>'}</div>`;
+}else if(tab==='المخزون'){
+html=`<div class="card"><div class="sectionbar"><h2>المخزون وحالة الماكينات</h2><button data-go="الماكينات" class="gold">+ إضافة ماكينة</button></div>${grid([['إجمالي الماكينات',db.machines.length],['متاحة',db.machines.filter(m=>!m.dealId).length],['محجوزة',db.machines.filter(m=>m.dealId&&!m.delivered).length],['تم التسليم',db.machines.filter(m=>m.delivered).length]])}${table(['الكود','الماكينة','المورد','الشحنة','التكلفة','الحالة'],db.machines.map(m=>tr([esc(m.code),esc(m.name),esc(nameOf(db.suppliers,m.supplierId)),esc(m.batch),cash(machineCost(m)),m.delivered?'تم التسليم':m.dealId?'محجوزة':'متاحة'])))}</div>`;
+}else if(tab==='الفواتير'){
+html=`<div class="card"><h2>فواتير البيع وكشوف الحساب</h2><p class="hint">اختار فاتورة من صفقات البيع المسجلة. الطباعة تستخدم بيانات الصفقة الفعلية.</p>${table(['رقم الصفقة','العميل','التاريخ','الإجمالي','المدفوع','المتبقي','مستندات'],db.deals.map(d=>tr([esc(d.code),esc(nameOf(db.customers,d.customerId)),esc(d.date),cash(total(d)),cash(paid(d)),cash(total(d)-paid(d)),btn('فاتورة','invoice',d.id)+' '+btn('كشف حساب','statement',d.id)])))}</div>`;
+}else if(tab==='التقارير'){
+const receipts=sum(db.receipts,r=>r.amount),supplierPaid=sum(db.supplierPayments,p=>p.amount),expenses=sum(db.expenses,e=>e.amount),withdrawals=sum(db.withdrawals,w=>w.amount),moves=sum(db.cashMoves,x=>x.type==='in'?x.amount:-x.amount);
+html=`<div class="card"><h2>التقارير المالية</h2>${grid([['إجمالي المبيعات',cash(sum(db.deals,d=>total(d)))],['مقبوضات العملاء',cash(receipts)],['مدفوعات الموردين',cash(supplierPaid)],['المصاريف',cash(expenses)],['المسحوبات',cash(withdrawals)],['رصيد الخزنة المسجل',cash(receipts-supplierPaid-expenses-withdrawals+moves+loanCash())]])}</div><div class="card"><h2>تقرير الصفقات</h2>${table(['الصفقة','العميل','الإجمالي','المدفوع','المتبقي'],db.deals.map(d=>tr([esc(d.code),esc(nameOf(db.customers,d.customerId)),cash(total(d)),cash(paid(d)),cash(total(d)-paid(d))])))}</div><div class="card"><h2>أرصدة الموردين</h2>${table(['المورد','الرصيد'],db.suppliers.map(v=>tr([esc(v.name),cash(supplierBalance(v))])))}</div>`;
+}else if(tab==='السلف'){
+ html=`<div class="card"><h2>السلف والفلوس عند الغير</h2><p class="hint">سجل أي شخص باسمه، سواء كان عميلًا أو موردًا أو غير ذلك. السلف لا تدخل في المبيعات أو الأرباح أو المصاريف.</p>${form('loanPerson',field('name','اسم الشخص')+pick('direction','نوع الحساب',[{id:'out',name:'فلوس لينا عند الشخص'},{id:'in',name:'فلوس علينا للشخص'}]))}</div>
+ <div class="card"><h2>تسجيل سلفة أو سداد</h2>${db.loans.length?form('loanMove',date()+pick('loanId','الشخص',db.loans.map(l=>({id:l.id,name:l.name+' — '+(l.direction==='out'?'لينا عنده':'علينا ليه')})))+pick('type','نوع العملية',[{id:'give',name:'سلفة جديدة / استلام سلفة'},{id:'return',name:'سداد جزء أو كامل'}])+field('amount','المبلغ','number','min="0.01" step="0.01"')+noteChoice('note','البيان',['سلفة','دفعة من الحساب','سداد جزئي','سداد كامل','أخرى'])):'<p class="hint">سجل اسم شخص أولًا.</p>'}</div>
+ <div class="card"><h2>حسابات السلف</h2>${table(['الاسم','نوع الحساب','الرصيد','إجراء'],db.loans.map(l=>tr([esc(l.name),l.direction==='out'?'فلوس لينا':'فلوس علينا',cash(loanBalance(l)),btn('تعديل الاسم','editLoanPerson',l.id,'light small')])) )}</div>
+ <div class="card"><h2>حركات السلف والسداد</h2>${table(['التاريخ','الشخص','العملية','البيان','المبلغ','إجراء'],db.loanMoves.map(m=>tr([esc(m.date),esc(nameOf(db.loans,m.loanId)),m.type==='give'?'سلفة':'سداد',esc(m.note),cash(m.amount),btn('تعديل','editLoanMove',m.id,'light small')+' '+btn('إلغاء','deleteLoanMove',m.id,'red small')])) )}</div>`;
+ }else if(tab==='المصاريف والخزنة'){
+html=`<div class="card"><h2>إضافة مصروف</h2>${form('expense',date()+noteChoice('note','البيان',expenseNotes)+field('amount','المبلغ','number','min="0.01" step="0.01"')+`<div><label>الماكينة (اختياري)</label><select name="machineId"><option value="">مصروف عام</option>${db.machines.map(m=>`<option value="${esc(m.id)}">${esc(m.code+' — '+m.name)}</option>`).join('')}</select></div>`)}</div>
+<div class="card"><h2>مسحوبات شخصية / البيت</h2>${form('withdrawal',date()+field('note','البيان')+field('amount','المبلغ','number','min="0.01" step="0.01"'))}</div>
+<div class="card"><h2>رصيد افتتاحي / تمويل / حركة خزنة</h2>${form('cashMove',date()+pick('type','نوع الحركة',[{id:'in',name:'إضافة نقدية / رصيد افتتاحي'},{id:'out',name:'صرف نقدي آخر'}])+field('amount','المبلغ','number','min="0.01" step="0.01"')+field('note','البيان'))}</div>
+<div class="card"><h2>سجل المصاريف</h2>${table(['التاريخ','البيان','الماكينة','المبلغ'],db.expenses.map(e=>tr([esc(e.date),esc(e.note),esc(db.machines.find(m=>m.id===e.machineId)?.code||'عام'),cash(e.amount)])))}</div>
+<div class="card"><h2>سجل المسحوبات</h2>${table(['التاريخ','البيان','المبلغ'],db.withdrawals.map(e=>tr([esc(e.date),esc(e.note),cash(e.amount)])))}</div>
+<div class="card"><h2>حركات الخزنة الأخرى</h2>${table(['التاريخ','البيان','نوع الحركة','المبلغ'],db.cashMoves.map(e=>tr([esc(e.date),esc(e.note),e.type==='in'?'إضافة':'خصم',cash(e.amount)])))}</div>`;
+}else{
+html=`<div class="card"><h2>النسخ الاحتياطي</h2><p class="hint">احفظ نسخة JSON خارج المتصفح بانتظام. الاستيراد يستبدل بيانات البرنامج الحالية بعد التأكيد.</p><div class="actions"><button data-do="backup">تنزيل نسخة احتياطية</button><label style="max-width:300px">استيراد نسخة<input id="restoreFile" type="file" accept=".json,application/json"></label></div></div><div class="card"><h2>حالة الحفظ</h2><p>الحفظ المحلي: <b>مفعّل على هذا المتصفح</b></p><p>المزامنة السحابية: <b>غير مفعّلة</b></p><p class="hint">النسخة الحالية لا ترسل أي بيانات إلى Supabase. تفعيل المزامنة الآمنة يحتاج ربط تسجيل الدخول والتحقق من صلاحيات الجداول.</p></div>`;
+}
+$('app').innerHTML=html;
+if(tab==='العملاء'||tab==='صفقات البيع'){
+ const wanted=tab==='العملاء'?['إضافة عميل','العملاء']:['إنشاء صفقة بيع','إضافة ماكينة لصفقة','تسجيل قسط / دفعة عميل','الصفقات والفواتير والتسليم'];
+ $('app').querySelectorAll(':scope > .card').forEach(card=>{const title=card.querySelector('h2')?.textContent?.trim();if(!wanted.includes(title))card.remove()});
+}
+}
+function validMoney(f){return Number.isFinite(Number(f.amount))&&Number(f.amount)>0}
+function submit(action,f){if(action==='supplier'){if(db.suppliers.some(s=>s.name===f.name.trim()))return alert('المورد موجود بالفعل');db.suppliers.push({id:uid(),name:f.name.trim(),phone:f.phone||''})}
+else if(action==='machine'){if(!db.suppliers.some(s=>s.id===f.supplierId))return alert('اختر موردًا');if(db.machines.some(m=>m.code.trim().toLowerCase()===f.code.trim().toLowerCase()))return alert('كود الماكينة موجود بالفعل');db.machines.push({...f,id:uid(),code:f.code.trim(),name:f.name.trim(),cost:num(f.cost),sale:0,dealId:null,delivered:false})}
+else if(action==='supplierPayment'){if(!validMoney(f))return alert('أدخل مبلغًا صحيحًا');db.supplierPayments.push({...f,id:uid(),amount:num(f.amount)})}
+else if(action==='loanPerson'){if(!f.name.trim())return alert('اكتب اسم الشخص');db.loans.push({id:uid(),name:f.name.trim(),direction:f.direction})}
+ else if(action==='loanMove'){if(!db.loans.some(l=>l.id===f.loanId)||!validMoney(f))return alert('راجع البيانات');if(f.type==='return'&&num(f.amount)>loanBalance(db.loans.find(l=>l.id===f.loanId))+.00001)return alert('السداد أكبر من الرصيد');db.loanMoves.push({...f,id:uid(),amount:num(f.amount)})}
+ else if(action==='customer'){if(db.customers.some(c=>c.name===f.name.trim()))return alert('العميل موجود بالفعل');db.customers.push({id:uid(),code:'C'+String(db.customers.length+1).padStart(3,'0'),name:f.name.trim(),phone:f.phone||''})}
+else if(action==='deal'){if(!db.customers.some(c=>c.id===f.customerId))return alert('اختر عميلًا');db.deals.push({...f,id:uid(),code:'S'+String(db.deals.length+1).padStart(3,'0')})}
+else if(action==='assign'){let m=db.machines.find(m=>m.id===f.machineId),d=db.deals.find(d=>d.id===f.dealId);if(!m||m.dealId||!d||num(f.sale)<=0)return alert('تأكد من الصفقة والماكينة والسعر');m.dealId=d.id;m.sale=num(f.sale)}
+else if(action==='receipt'){let d=db.deals.find(d=>d.id===f.dealId);if(!d||!validMoney(f)||num(f.amount)>total(d)-paid(d)+.00001)return alert('الدفعة أكبر من المتبقي أو غير صحيحة');db.receipts.push({...f,id:uid(),amount:num(f.amount)})}
+else if(['expense','withdrawal','cashMove'].includes(action)){if(!validMoney(f))return alert('أدخل مبلغًا صحيحًا');db[action==='expense'?'expenses':action==='withdrawal'?'withdrawals':'cashMoves'].push({...f,id:uid(),amount:num(f.amount)})}
+persist()}
+document.addEventListener('submit',e=>{let form=e.target.closest('form[data-action]');if(!form)return;e.preventDefault();submit(form.dataset.action,Object.fromEntries(new FormData(form)))});
+$('nav').addEventListener('click',e=>{let b=e.target.closest('[data-tab]');if(b){tab=b.dataset.tab;query='';document.body.classList.remove('drawer-open');render();window.scrollTo(0,0)}});
+$('app').addEventListener('click',e=>{let b=e.target.closest('[data-go]');if(b){tab=b.dataset.go;query='';render();window.scrollTo(0,0)}});
+$('app').addEventListener('input',e=>{if(e.target.id==='machineSearch'){query=e.target.value;let start=e.target.selectionStart;render();let el=$('machineSearch');el.focus();el.setSelectionRange(start,start)}});
+$('app').addEventListener('change',async e=>{if(e.target.id!=='restoreFile')return;let f=e.target.files[0];if(!f)return;try{let x=JSON.parse(await f.text());if(!x||!Array.isArray(x.suppliers)||!Array.isArray(x.machines)||!Array.isArray(x.deals))throw Error();if(!confirm('استبدال جميع بيانات البرنامج الحالية بالنسخة المستوردة؟'))return;db=x;for(let k of Object.keys(EMPTY()))if(!Array.isArray(db[k]))db[k]=[];tab='الرئيسية';persist()}catch(err){alert('ملف النسخة الاحتياطية غير صالح')}});
+$('app').addEventListener('click',e=>{let b=e.target.closest('[data-do]');if(!b)return;let a=b.dataset.do,id=b.dataset.id;
+if(a==='backup'){let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='alhamd-backup-'+today()+'.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);return}
+if(a==='renameSupplier'){let s=db.suppliers.find(x=>x.id===id);if(!s)return;let n=prompt('اسم المورد الجديد',s.name);if(n===null)return;n=n.trim();if(!n||db.suppliers.some(x=>x.id!==id&&x.name===n))return alert('الاسم غير صحيح أو مكرر');s.name=n;persist()}
+if(a==='editSupplierPayment'||a==='editLoanMove'){
+ let arr=a==='editSupplierPayment'?db.supplierPayments:db.loanMoves,rec=arr.find(x=>x.id===id);if(!rec)return;
+ let v=prompt('المبلغ الصحيح',rec.amount);if(v===null)return;
+ if(!Number.isFinite(Number(v))||num(v)<=0)return alert('المبلغ غير صحيح');
+ if(a==='editLoanMove'&&rec.type==='return'){let l=db.loans.find(x=>x.id===rec.loanId);if(num(v)>loanBalance(l)+num(rec.amount)+.00001)return alert('السداد أكبر من الرصيد')}
+ rec.amount=num(v);persist();
+ }
+ if(a==='deleteSupplierPayment'||a==='deleteLoanMove'){
+ if(!confirm('تأكيد إلغاء هذه الحركة؟ سيتم تحديث الرصيد والخزنة تلقائيًا'))return;
+ let arr=a==='deleteSupplierPayment'?db.supplierPayments:db.loanMoves;
+ let i=arr.findIndex(x=>x.id===id);if(i<0)return;
+ if(a==='deleteLoanMove'&&arr[i].type==='give'){let l=db.loans.find(x=>x.id===arr[i].loanId);if(loanBalance(l)-num(arr[i].amount)<-.00001)return alert('لا يمكن حذف السلفة قبل تعديل السداد المرتبط بها')}
+ arr.splice(i,1);persist();
+ }
+ if(a==='editLoanPerson'){let l=db.loans.find(x=>x.id===id);if(!l)return;let n=prompt('اسم الشخص',l.name);if(n===null)return;if(!n.trim())return alert('الاسم مطلوب');l.name=n.trim();persist()}
+ if(a==='editCustomer'){let c=db.customers.find(x=>x.id===id);if(!c)return;let n=prompt('اسم العميل',c.name);if(n===null)return;if(!n.trim())return alert('الاسم مطلوب');c.name=n.trim();let p=prompt('رقم الهاتف',c.phone||'');if(p!==null)c.phone=p;persist()}
+if(a==='editMachine'){let m=db.machines.find(x=>x.id===id);if(!m||m.dealId)return;let n=prompt('اسم الماكينة',m.name);if(n===null)return;if(!n.trim())return alert('الاسم مطلوب');m.name=n.trim();let c=prompt('كود الماكينة',m.code);if(c===null)return;if(!c.trim()||db.machines.some(x=>x.id!==id&&x.code===c.trim()))return alert('الكود غير صحيح أو مكرر');m.code=c.trim();persist()}
+if(a==='supplierDetail'){let s=db.suppliers.find(x=>x.id===id);if(!s)return;let machines=db.machines.filter(m=>m.supplierId===id),groups={};machines.forEach(m=>{let key=m.batch||'غير محدد';if(!groups[key])groups[key]={total:0,count:0};groups[key].total+=num(m.cost);groups[key].count++});let lines=Object.entries(groups).map(([k,v])=>k+': '+v.count+' ماكينة — '+cash(v.total));alert('المورد: '+s.name+'\nالمشتريات:\n'+(lines.join('\n')||'لا توجد مشتريات')+'\nالمدفوع: '+cash(sum(db.supplierPayments.filter(p=>p.supplierId===id),p=>p.amount))+'\nالمتبقي: '+cash(supplierBalance(s)))}
+if(a==='deliver'){let m=db.machines.find(x=>x.id===id),d=db.deals.find(x=>x.id===m?.dealId);if(!m||!d||m.delivered)return;if(deliverable(d)+.00001<num(m.sale))return alert('لا يمكن التسليم: المدفوع لا يغطي سعر الماكينة بعد خصم ما تم تسليمه');if(confirm('تأكيد تسليم '+m.name+'؟')){m.delivered=true;m.deliveryDate=today();persist()}}
+if(['invoice','statement','receiptPrint'].includes(a))printDocument(a,id);
+});
+function head(title,d){let c=db.customers.find(x=>x.id===d.customerId);return `<div class="bill-top"><div class="bill-brand"><div class="bill-emblem">⚙</div><div><div class="bill-company">الحمد</div><div class="bill-subtitle">للاستيراد وتجارة معدات النجارة</div><div class="bill-en">ALHAMD · WOODWORKING MACHINERY</div></div></div><div class="bill-contact"><div>☎ 01500070661</div><div>☎ 01555502800</div><div>☎ 01004670661</div><small>المنصورة – دكرنس – القباب الصغرى<br>بجوار معرض مكة للسيراميك</small></div></div><div class="bill-title"><span>${title}</span><small>${title==='فاتورة بيع'?'SALES INVOICE':title==='كشف حساب'?'ACCOUNT STATEMENT':'PAYMENT RECEIPT'}</small></div><div class="bill-meta"><div><small>رقم الفاتورة</small><strong>INV-${esc(d.code)}</strong></div><div><small>التاريخ</small><strong>${esc(d.date||today())}</strong></div></div><div class="bill-info"><div><h3>بيانات العميل</h3><p>اسم العميل <b>${esc(c?.name||'—')}</b></p><p>كود العميل <b>${esc(c?.code||c?.id?.slice(-6).toUpperCase()||'—')}</b></p><p>الهاتف <b>${esc(c?.phone||'—')}</b></p><p>العنوان <b>${esc(c?.address||'—')}</b></p></div><div><h3>بيانات الصفقة</h3><p>رقم الصفقة <b>${esc(d.code)}</b></p><p>الحالة <b>${dealMachines(d).every(m=>m.delivered)?'تم التسليم':'جاري التنفيذ / التسليم'}</b></p><p>طريقة الدفع <b>${paid(d)>=total(d)?'مدفوعة بالكامل':'دفعات / أقساط'}</b></p></div></div>`}
+function printDocument(type,id){let d=db.deals.find(d=>d.id===id);if(!d)return;let html=head(type==='invoice'?'فاتورة بيع':type==='statement'?'كشف حساب':'إيصال استلام دفعة',d);
+if(type==='invoice'){html+=`<div class="bill-items">`+table(['م','كود الماكينة','اسم الماكينة','الصورة','الكمية','سعر الوحدة','الإجمالي'],dealMachines(d).map((m,i)=>tr([i+1,esc(m.code),esc(m.name),m.image?'<img class="bill-machine-photo" src="'+esc(m.image)+'" alt="صورة الماكينة">':'—','1',cash(m.sale),cash(m.sale)])))+`</div><div class="bill-lower"><div class="bill-notes"><h3>ملاحظات</h3><p>• يتم إثبات تسليم الماكينات حسب حالة الصفقة المسجلة.</p><p>• يُرجى الاحتفاظ بالفاتورة للرجوع إليها.</p><p>• هذه الفاتورة صادرة من شركة الحمد.</p></div><div class="bill-totals"><p>إجمالي الفاتورة <b>${cash(total(d))}</b></p><p>المدفوع <b>${cash(paid(d))}</b></p><p class="bill-due">المتبقي <b>${cash(total(d)-paid(d))}</b></p></div></div>`}
+if(type==='statement')html+=table(['التاريخ','العملية','المبلغ'],[tr([esc(d.date),'إجمالي الصفقة',cash(total(d))]),...db.receipts.filter(r=>r.dealId===d.id).map(r=>tr([esc(r.date),esc(r.note||'دفعة'),cash(r.amount)]))])+`<h3>المتبقي: ${cash(total(d)-paid(d))}</h3>`;
+if(type==='receiptPrint'){let r=db.receipts.filter(r=>r.dealId===d.id).at(-1);if(!r)return alert('لا توجد دفعات للصفقة');html+=`<h2>استلمنا مبلغ: ${cash(r.amount)}</h2><p>بتاريخ: ${esc(r.date)}</p><p>إجمالي المدفوع: ${cash(paid(d))} — المتبقي: ${cash(total(d)-paid(d))}</p>`}
+if(type==='invoice')html+=`<div class="bill-brands"><strong>براندات عالمية نثق بها</strong><div class="bill-brand-grid">${['SCM','BIESSE','HOMAG','ALTENDORF','FELDER','WEINIG','HOLZ-HER','FORMAT 4','SICAR','MAGGI','IMA','VITAP','Brandt','CEHISA','CASADEI','griggio','OMAL','Giben'].map(x=>'<span>'+x+'</span>').join('')}</div></div>`;
+html+=`<div class="bill-signatures"><div>توقيع العميل<div class="bill-line"></div></div><div class="bill-stamp">ختم الشركة<br><small>مكان الختم</small></div><div>توقيع الشركة<div class="bill-line"></div></div></div><div class="bill-footer">الحمد لاستيراد وتجارة معدات النجارة <span>ثقتكم أساس نجاحنا</span></div>`;
+$('paper').innerHTML=`<div class="invoice bill">${html}</div>`;window.print()}
+
+try{render()}catch(err){console.error(err);document.getElementById('app').innerHTML='<div class="card"><h2>تعذر عرض الصفحة</h2><p>حدث خطأ أثناء تحميل الواجهة. بياناتك المحلية لم يتم حذفها. جرّب تحديث الصفحة.</p></div>'}
+</script></body></html>
